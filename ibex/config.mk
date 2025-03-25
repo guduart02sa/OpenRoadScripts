@@ -45,9 +45,16 @@ export SDC_FILE      = $(DESIGN_HOME)/$(PLATFORM)/$(DESIGN_NICKNAME)/constraint.
 # Adders degrade ibex setup repair
 export ADDER_MAP_FILE :=
 
-export CORE_UTILIZATION = 40
+export CORE_UTILIZATION = 50
 export PLACE_DENSITY_LB_ADDON = 0.1
-export TNS_END_PERCENT = 100
+export TNS_END_PERCENT = 50
+
+export PLACE_DENSITY          = 0.75
+
+export IO_PLACER_H = met3
+export IO_PLACER_V = met2
+
+export PLACE_PINS_ARGS = -min_distance 12
 
 
 #export BLOCKS ?= 
@@ -55,8 +62,10 @@ export SYNTH_HIERARCHICAL = 1
 export MAX_UNGROUP_SIZE = 0
 export RTLMP_FLOW = 1
 
-export BLOCKS                ?= ibex_alu
+export BLOCKS ?= ibex_if_stage ibex_register_file_ff ibex_id_stage ibex_wb_stage ibex_load_store_unit
 
+export ADDITIONAL_LEFS = ./results/sky130hs/ibex_ibex_ex_block/base/ibex_ex_block.lef
+export ADDITIONAL_LIBS = ./results/sky130hs/ibex_ibex_ex_block/base/ibex_ex_block.lib
 
 export FASTROUTE_TCL = $(DESIGN_HOME)/$(PLATFORM)/$(DESIGN_NICKNAME)/fastroute.tcl
 
